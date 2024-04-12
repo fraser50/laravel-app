@@ -10,17 +10,8 @@ use Illuminate\Support\Facades\Log;
 class ImageController extends Controller
 {
     public function store(Request $request): RedirectResponse {
-        //return redirect("/");
-        $files = $request->files;
-        error_log("stuff");
-        foreach ($files->keys() as $f) {
-            error_log("Filename: $f");
-        }
-
         $imageFile = $request->file("image");
         $filePath = $imageFile->store("uploads", "public");
-
-        // TODO: File upload
 
         $title = $request->post("title");
         $desc = $request->post("desc");
@@ -33,5 +24,9 @@ class ImageController extends Controller
         $image->save();
 
         return redirect("/");
+    }
+
+    public function index(Request $request) {
+        return view("images", ["images" => Image::all()]);
     }
 }

@@ -1,0 +1,15 @@
+.previewBox {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+    margin: 25px;
+    display: inline-block;
+    padding: 15px;
+    padding-top: 0px;
+}
+
+.previewBox h2 {
+    margin: 5px;
+    text-align: center;
+}

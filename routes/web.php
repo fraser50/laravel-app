@@ -12,3 +12,5 @@ Route::get('/upload', function () {
 });
 
 Route::post('/upload', [ImageController::class, 'store']);
+
+Route::get('/images', [ImageController::class, 'index']);
