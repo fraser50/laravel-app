@@ -29,4 +29,14 @@ class ImageController extends Controller
     public function index(Request $request) {
         return view("images", ["images" => Image::all()]);
     }
+
+    public function get(int $id) {
+        $image = Image::where('id', $id)->first();
+
+        if (empty($image)) {
+            return "That image does not exist";
+        }
+
+        return view("viewimage", ["image" => $image]);
+    }
 }
