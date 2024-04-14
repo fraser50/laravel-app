@@ -11,9 +11,9 @@ Route::get('/', function () {
 
 Route::get('/upload', function () {
     return view('upload');
-});
+})->middleware('auth.basic');
 
-Route::post('/upload', [ImageController::class, 'store']);
+Route::post('/upload', [ImageController::class, 'store']) ->middleware('auth.basic');
 
 Route::get('/images', [ImageController::class, 'index']);
 

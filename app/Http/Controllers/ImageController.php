@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Image;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class ImageController extends Controller
@@ -20,6 +22,7 @@ class ImageController extends Controller
         $image->title = $title;
         $image->description = $desc;
         $image->fileName = $filePath;
+        Auth::user()->images()->save($image);
 
         $image->save();
 
