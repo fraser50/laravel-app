@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Image;
@@ -40,6 +41,28 @@ class ImageController extends Controller
             return "That image does not exist";
         }
 
-        return view("viewimage", ["image" => $image]);
+        $comments = $image->comments()->get();
+
+        return view("viewimage", ["image" => $image, "comments" => $comments]);
+    }
+
+    public function postComment(Request $request, int $id) {
+        $image = Image::where('id', $id)->first();
+
+        if (empty($image)) {
+            return "That image does not exist";
+        }
+
+        $details = $request->validate([
+            "message" => "required",
+        ]);
+
+        $comment = new Comment;
+        $comment->comment_text = $details['message'];
+
+        $image->comments()->save($comment);
+
+        return redirect('/image/' . $id);
+
     }
 }

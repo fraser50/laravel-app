@@ -18,6 +18,7 @@ Route::post('/upload', [ImageController::class, 'store']) ->middleware('auth.bas
 Route::get('/images', [ImageController::class, 'index']);
 
 Route::get('/image/{id}', [ImageController::class, 'get']);
+Route::post('/image/{id}', [ImageController::class, 'postComment']);
 
 Route::get('/register', function () {
     if (Auth::check()) {
