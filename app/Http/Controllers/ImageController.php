@@ -41,7 +41,7 @@ class ImageController extends Controller
             return "That image does not exist";
         }
 
-        $comments = $image->comments()->get();
+        $comments = $image->comments()->orderBy('created_at', 'desc')->get();
 
         return view("viewimage", ["image" => $image, "comments" => $comments]);
     }

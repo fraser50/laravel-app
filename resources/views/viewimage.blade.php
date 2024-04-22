@@ -5,9 +5,9 @@
     </head>
 
     <body>
-        <div style="margin: auto; max-width: fit-content">
+        <div style="width: 50%; margin: auto">
             <h1 style="text-align: center">{{ $image->title }} by {{ $image->author()->first()->name }}</h1>
-            <img src="{{ Illuminate\Support\Facades\Storage::url($image->fileName) }}" style="max-width: 25em; max-height: 25em"><br>
+            <img src="{{ Illuminate\Support\Facades\Storage::url($image->fileName) }}" style="max-width: 25em; max-height: 25em; width:auto; margin: auto"><br>
             <p>{{ $image->description }}</p><br>
             <h3>Comments</h3>
             <form action="/image/{{ $image->getKey() }}" method="post">
