@@ -31,6 +31,12 @@ class GroupController extends Controller
     }
 
     public function get(int $id) {
-        return 'TODO';
+        $group = Group::where('id', $id)->first();
+
+        if (empty($group)) {
+            return "That group does not exist";
+        }
+
+        return view("images", ["images" => $group->images()->get()]);
     }
 }

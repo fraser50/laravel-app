@@ -3,19 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class GroupImageMember extends Model
+class GroupImageMember extends Pivot
 {
     use HasFactory;
-
-    public function group(): BelongsTo {
-        return $this->belongsTo(Group::class, 'id');
-    }
-
-    public function image(): BelongsTo {
-
-        return $this->belongsTo(Image::class, 'id');
-    }
 }
