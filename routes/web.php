@@ -14,12 +14,13 @@ Route::get('/upload', function () {
     return view('upload');
 })->middleware('auth.basic');
 
-Route::post('/upload', [ImageController::class, 'store']) ->middleware('auth.basic');
+Route::post('/upload', [ImageController::class, 'store'])->middleware('auth.basic');
 
 Route::get('/images', [ImageController::class, 'index']);
 
 Route::get('/image/{id}', [ImageController::class, 'get']);
-Route::post('/image/{id}', [ImageController::class, 'postComment']);
+Route::post('/image/{id}', [ImageController::class, 'postComment'])->middleware('auth.basic');
+Route::post('/image/{id}/addtogroup', [ImageController::class, 'addToGroup'])->middleware('auth.basic');
 
 Route::get('/groups', [GroupController::class, 'index']);
 

@@ -18,4 +18,8 @@ class Image extends Model
     public function comments(): HasMany {
         return $this->hasMany(Comment::class, "author");
     }
+
+    public function memberships(): HasMany {
+        return $this->hasMany(GroupImageMember::class, 'image_id');
+    }
 }

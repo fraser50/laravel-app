@@ -13,8 +13,20 @@
             <form action="/image/{{ $image->getKey() }}" method="post">
                 @csrf
                 <input type="text" name="message">
-                <input type="submit" vlaue="Post">
+                <input type="submit" vlaue="Post"><br>
+                
             </form><br>
+            <form action="/image/{{ $image->getKey() }}/addtogroup" method="post">
+                @csrf
+                <select name="addtogroup" id="addtogroup">
+                    <option value="none">Select an option</option>
+                    @foreach ($groups as $group)
+                        <option value="{{ $group->getKey() }}">{{ $group->title }}</option>
+                    @endforeach
+                    <br>
+                    <input type="submit" value="Add to Group">
+                </select>
+            </form>
             <div>
                 @foreach ($comments as $comment)
                     @php
